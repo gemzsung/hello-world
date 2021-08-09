@@ -6,3 +6,5 @@ open source eureka 적용
 
 # eureka server 추가
 @eureka-server annotation 추가
+# eureka clinet 추가
+@ eureka-client annotation 추가
