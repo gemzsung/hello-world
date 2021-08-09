@@ -1,0 +1,69 @@
+spring:
+  profiles:
+    active: local
+
+##########################
+###### local
+---
+spring:
+  profiles: local
+  application:
+    name: eureka-service
+
+server:
+  port: 8080
+eureka:
+  server:
+    waitTimeInMsWhenSyncEmpty: 0
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://192.168.56.104:${server.port}/eureka/
+  instance:
+    #hostname: 192.168.56.104
+    prefer-ip-address: true    
+########################################################################
+######  DEV
+---
+
+spring:
+  profiles: dev
+  application:
+    name: eureka-service
+
+server:
+  port: 8080
+
+eureka:
+  server:
+    waitTimeInMsWhenSyncEmpty: 0
+  
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://172.23.176.230:${server.port}/eureka/
+  instance:
+    #hostname: 172.23.176.230
+    prefer-ip-address: true
+########################################################################
+######  PROD
+---
+
+spring:
+  profiles: prod
+  application:
+    name: eureka-service
+
+server:
+  port: 8080
+
+eureka:
+  instance:
+    hostname: 172.23.176.230
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    server:
+      waitTimeInMsWhenSyncEmpty: 0
